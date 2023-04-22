@@ -11,7 +11,7 @@ export interface IAccount extends mongoose.Document {
 }
 
 const accountSchema = new mongoose.Schema({
-    username: { type: String, required: true, index: true },
+    username: { type: String, required: true, index: true, unique: true },
     password: {type: String, required: true },
     userLevel: {type: Number, required: true, enum: [1, 2, 3]  },
     

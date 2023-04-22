@@ -1,3 +1,3 @@
-export const saltRound: Number = 10;
+export const saltRound: number = 10;
 
-export const secret: String = 'JesuisUneVoiture';
+export const secret: string = 'JesuisUneVoiture';
