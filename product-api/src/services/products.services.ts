@@ -8,11 +8,11 @@ export const findAll = async () => {
     return await ProductModel.find();
 };
 
-export const findById = async (id : Product['id']) => {
+export const findById = async (id: Product['id']) => {
     return await ProductModel.findById(id);
 };
 
-export const create = async (product : BaseProduct) => {
+export const create = async (product: BaseProduct) => {
     const created = await ProductModel.create(product);
 
     if (created instanceof ProductModel){
@@ -22,25 +22,25 @@ export const create = async (product : BaseProduct) => {
     }
 };
 
-export const update = async (id : Product['id'], product : BaseProduct) => {
-    return await ProductModel.updateOne({ _id : id }, product);
+export const update = async (id: Product['id'], product: BaseProduct) => {
+    return await ProductModel.updateOne({ _id: id }, product);
 };
 
-export const remov = async (id : Product['id']) => {
-    return await ProductModel.deleteOne({ _id : id});
+export const remov = async (id: Product['id']) => {
+    return await ProductModel.deleteOne({ _id: id});
 };
 
-export const searching = async (search : SearchProduct) => {
-    const filter : any = _.pick(search, filters);
+export const searching = async (search: SearchProduct) => {
+    const filter: any = _.pick(search, filters);
     return await filtering(filter);
 };
 
-async function filtering(filter : SearchProduct) {
+async function filtering(filter: SearchProduct) {
     const dateFilter = _.pick(filter, filtersDate);
     const otherFilter = _.omit(filter, filtersDate);
-    let finalFilter : any = {};
+    let finalFilter: any = {};
 
-    const keys : String[] = Object.keys(filter);
+    const keys: String[] = Object.keys(filter);
     if (Object.keys(otherFilter).length > 0) {
         for (let index = 0; index < Object.keys(otherFilter).length; index++) {
             const key = Object.keys(otherFilter)[index];

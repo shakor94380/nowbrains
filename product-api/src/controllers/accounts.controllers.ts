@@ -4,11 +4,11 @@ import { create, findByName } from "../services/accounts.services";
 import jwt from 'jsonwebtoken';
 import env from '../configs/environement.config'
 
-export const login = async(req : Request, res : Response) => {
+export const login = async(req: Request, res: Response) => {
     try {
-        const logInfo : Login = req.body.data;
+        const logInfo: Login = req.body.data;
 
-        const account : any = await findByName(logInfo.username);
+        const account: any = await findByName(logInfo.username);
         if (!account) {
             return res.status(403).send('bad account'); 
         }
@@ -17,13 +17,13 @@ export const login = async(req : Request, res : Response) => {
             if ( err || !isEqual) {
                 return res.status(403).send('bad password');
             }
-            const token : string = await jwt.sign(
+            const token: string = await jwt.sign(
                 { id: account._id, userLevel: account.userLevel },
                 env.secret,
                 { expiresIn: '3h' }
             )
            return res.status(202).send(
-            { token, account : {
+            { token, account: {
                 username: account.username, userLevel: account.userLevel
                 }
             });
@@ -33,9 +33,9 @@ export const login = async(req : Request, res : Response) => {
     }
 }
 
-export const register = async(req : Request, res : Response) => {
+export const register = async(req: Request, res: Response) => {
     try {
-        const account : BaseAccount = req.body.data;
+        const account: BaseAccount = req.body.data;
         const created = await create(account);
 
         if (created) {

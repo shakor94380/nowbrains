@@ -11,9 +11,9 @@ export interface Product extends BaseProduct {
 }
 
 export interface SearchProduct {
-  name : string;
-  price : number;
-  stock : number;
-  start : Date;
-  end : Date;
+  name: string;
+  price: number;
+  stock: number;
+  start: Date;
+  end: Date;
 }

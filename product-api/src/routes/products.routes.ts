@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { getAll, get, post, patch, remove, search } from '../controllers/products.controllers';
 
-const routes : Router = Router();
+const routes: Router = Router();
 
 routes.get('/', getAll);
 

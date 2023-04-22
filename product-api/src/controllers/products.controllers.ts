@@ -3,7 +3,7 @@ import { findAll, findById, create, update, remov, searching } from '../services
 import { BaseProduct, Product, SearchProduct } from "../interfaces/product.interfaces";
 
 
-export const getAll = async(req : Request, res : Response) => {
+export const getAll = async(req: Request, res: Response) => {
     try {
         const products = await findAll();
 
@@ -13,9 +13,9 @@ export const getAll = async(req : Request, res : Response) => {
     }
 }
 
-export const get = async(req : Request, res : Response) => {
+export const get = async(req: Request, res: Response) => {
     try {
-        const id : string = req.params.id;
+        const id: string = req.params.id;
 
         const product = await findById(id);
     
@@ -29,10 +29,10 @@ export const get = async(req : Request, res : Response) => {
     }
 }
 
-export const post = async(req : Request, res : Response) => {
+export const post = async(req: Request, res: Response) => {
     try {
-        let product : BaseProduct = req.body.data;
-        const account : any = req.body.account;
+        let product: BaseProduct = req.body.data;
+        const account: any = req.body.account;
 
         product.idAccount = account.id;
         const created = await create(product);
@@ -48,10 +48,10 @@ export const post = async(req : Request, res : Response) => {
     
 }
 
-export const patch = async(req : Request, res : Response) => {
+export const patch = async(req: Request, res: Response) => {
     try {
-        const product : BaseProduct = req.body.data;
-        const id : string = req.params.id;
+        const product: BaseProduct = req.body.data;
+        const id: string = req.params.id;
 
         const modified = await update(id, product);
 
@@ -66,9 +66,9 @@ export const patch = async(req : Request, res : Response) => {
     }
 }
 
-export const remove = async(req : Request, res : Response) => {
+export const remove = async(req: Request, res: Response) => {
     try {
-        const id : string = req.params.id;
+        const id: string = req.params.id;
 
         const removed = await remov(id);
 
@@ -82,9 +82,9 @@ export const remove = async(req : Request, res : Response) => {
     }
 }
 
-export const search = async(req : Request, res : Response) => {
+export const search = async(req: Request, res: Response) => {
     try {
-        const filter : SearchProduct = req.body.data;
+        const filter: SearchProduct = req.body.data;
         const searched = await searching(filter);
         if (Object.keys(searched).length > 0) {
             return res.status(201).send(searched)

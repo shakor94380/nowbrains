@@ -3,7 +3,7 @@ import { authorize } from '../middlewares/authorize.middlewares'
 import productRoutes from './products.routes';
 import accountRoutes from './accounts.routes';
 
-const routes : Router = Router();
+const routes: Router = Router();
 
 routes.use('/products', authorize, productRoutes);
 
