@@ -37,7 +37,7 @@ accountSchema.methods.comparePassword = async function(
     loggedPassword : string,
     cb: (arg: any, isEqual?: Boolean) => void
 ) {
-    bcrypt.compare(loggedPassword, this.password, function(err: any, isEqual: Boolean) {
+    bcrypt.compare(loggedPassword, this.password, function(err: any, isEqual: boolean) {
         if (err) {
             return cb(err);
         }

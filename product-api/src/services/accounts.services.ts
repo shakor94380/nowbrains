@@ -1,7 +1,7 @@
 import AccountModel from '../models/account.model';
-import { BaseAccount, Login } from '../interfaces/account.interfaces';
+import { BaseAccount } from '../interfaces/account.interfaces';
 
-export const findByName = async (username: String) => {
+export const findByName = async (username: string) => {
     return await AccountModel.findOne({username});
 };
 

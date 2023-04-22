@@ -13,11 +13,11 @@ export const login = async(req : Request, res : Response) => {
             return res.status(403).send('bad account'); 
         }
 
-        account.comparePassword(logInfo.password, async (err: any, isEqual: Boolean) => {
+        account.comparePassword(logInfo.password, async (err: any, isEqual: boolean) => {
             if ( err || !isEqual) {
                 return res.status(403).send('bad password');
             }
-            const token : String = await jwt.sign(
+            const token : string = await jwt.sign(
                 { id: account._id, userLevel: account.userLevel },
                 env.secret,
                 { expiresIn: '3h' }
