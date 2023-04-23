@@ -25,8 +25,4 @@ export class AuthentificationService {
   register(data: Account) {
     return this.http.post<Account>('accounts', {data})
   }
-
-  haveAccess() {
-    return this.http.get<boolean>('access')
-  }
 }

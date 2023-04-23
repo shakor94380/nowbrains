@@ -9,8 +9,4 @@ routes.use('/products', authorize, productRoutes);
 
 routes.use('/accounts', accountRoutes);
 
-routes.get('/access', authorize, (req, res) => {
-    res.status(200).send(true);
-})
-
 export default routes;
