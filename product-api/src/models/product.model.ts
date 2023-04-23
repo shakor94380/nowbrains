@@ -18,4 +18,11 @@ const productSchema = new mongoose.Schema({
     stock: {type: Number, required: true },
 }, {timestamps: { createdAt: 'createdDate', updatedAt: 'updatedDate' } })
 
+productSchema.set('toJSON', {
+    transform: (doc, ret) => {
+      ret.price = ret.price.toString();
+      return ret;
+    },
+  });
+
 export default mongoose.model<IProduct>('Product', productSchema);
