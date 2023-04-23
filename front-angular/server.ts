@@ -5,6 +5,8 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
+import 'localstorage-polyfill';
+global['localStorage'] = localStorage;
 
 import { AppServerModule } from './src/main.server';
 
