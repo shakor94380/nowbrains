@@ -1,0 +1,39 @@
+<div class="col-md">
+    <a class="btn btn-primary" [routerLink]="['/', 'products']">Return to product</a>
+</div>
+<div class="card sizeCol">
+    <div class="row">
+        <div class="col fw-bold">Id </div>
+        <div class="col">{{product._id}}</div>
+    </div>
+    <div class="row">
+        <div class="col fw-bold">Product Name </div>
+        <div class="col">{{product.name}}</div>
+    </div>
+    <div class="row">
+        <div class="col fw-bold">IdAccount </div>
+        <div class="col">{{product.idAccount}}</div>
+    </div>
+    <div class="row">
+        <div class="col fw-bold">Description </div>
+        <div class="col">{{product.description}}</div>
+    </div>
+    <div class="row">
+        <div class="col fw-bold">Stock </div>
+        <div class="col">{{product.stock}}</div>
+    </div>
+    <div class="row">
+        <div class="col fw-bold">Price </div>
+        <div class="col">{{product.price | currency}}</div>
+    </div>
+    <div class="row">
+        <div class="col fw-bold">Created </div>
+        <div class="col">{{product.createdDate | date}}</div>
+    </div>
+    <div class="row">
+        <div class="col fw-bold">Last update </div>
+        <div class="col">{{product.updatedDate | date}}</div>
+    </div>
+</div>
+
+

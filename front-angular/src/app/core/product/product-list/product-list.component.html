@@ -1,0 +1,110 @@
+<div class="card">
+    <div class="card-body">
+        <div>
+            <button class="btn btn-primary" (click)="createProduct()" type="button" data-bs-toggle="modal" data-bs-target="#actionModal"><i class="bi bi-bag-plus"> Add</i></button>
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-funnel-fill"> Search</i></button>
+            <button class="btn btn-warning" type="button" (click)="clearFormSearch(); getProducts()"><i class="bi bi-x-lg"> Clear</i></button>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Stock</th>
+                  <th scope="col">Creation</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>  
+              <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>{{ product.createdDate | date}}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="showProduct(product._id)"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-danger" (click)="deleteProduct(product._id)"><i class="bi bi-trash-fill"></i></button>
+                        <button class="btn btn-success" type="button" (click)="editProduct(product)" data-bs-toggle="modal" data-bs-target="#actionModal"><i class="bi-pencil-fill"></i></button>
+                    </td>
+                </tr>
+              </tbody>        
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="actionModal" tabindex="-1" aria-labelledby="actionModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 *ngIf="action === 'save'" class="modal-title">Create a Product</h5>
+            <h5 *ngIf="action === 'edit'" class="modal-title">Edit a Product</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formProduct">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name: </label>
+                    <input class="form-control" id="name" type="text" formControlName="name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description: </label>
+                    <textarea class="form-control" id="description" formControlName="description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="stock">Stock: </label>
+                    <input class="form-control" id="stock" type="number" formControlName="stock">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price: </label>
+                    <input class="form-control" id="price" type="number" formControlName="price">
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button [disabled]="!formProduct.valid" type="button" class="btn btn-primary" (click)="save()" data-bs-dismiss="modal">Save Product</button>
+          </div>
+        </div>
+    </div>
+    
+</div>
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Search a Product</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="formSearch">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name: </label>
+                    <input class="form-control" id="name" type="text" formControlName="name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="stock">Stock: </label>
+                    <input class="form-control" id="stock" type="number" formControlName="stock">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price: </label>
+                    <input class="form-control" id="price" type="number" formControlName="price">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="start">Start Date: </label>
+                    <input class="form-control" id="start" type="date" formControlName="start">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="end">End Date: </label>
+                    <input class="form-control" id="end" type="date" formControlName="end">
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" (click)="clearFormSearch()">Clear</button>
+            <button [disabled]="!formSearch.valid" type="button" class="btn btn-primary" (click)="search()" data-bs-dismiss="modal">Search</button>
+          </div>
+        </div>
+    </div>
+</div>
+  

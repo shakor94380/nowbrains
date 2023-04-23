@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-body" *ngIf="loginInfo" (click)="logout()">
+        <p>Welcome {{ loginInfo.username }}</p>
+        <button class="btn btn-danger">LogOut</button>
+    </div>
+    <div class="card-body" *ngIf="!loginInfo">
+        <form [formGroup]="formLogin" (ngSubmit)="login()">
+            <div class="mb-2">
+                <label class="form-label" for="username">Username: </label>
+                <input class="form-control" id="username" type="text" formControlName="username">
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="password">Password: </label>
+                <input class="form-control" id="password" type="password" formControlName="password">
+            </div>
+            <button type="submit" [disabled]="!formLogin.valid" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+</div>
