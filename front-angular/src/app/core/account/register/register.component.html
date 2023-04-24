@@ -1,24 +1,27 @@
 <div class="card">
 <div class="card-body">
-        <form [formGroup]="formRegister" (ngSubmit)="register()">
-            <div class="mb-3">
-                <label class="form-label" for="username">Username: </label>
-                <input class="form-control" id="username" type="text" formControlName="username">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="password">Password: </label>
-                <input class="form-control" id="password" type="password" formControlName="password">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="userLevel">userLevel: </label>
-                <select class="form-select" formControlName="userLevel">
-                    <option [ngValue]="1" disabled>Choose your userLevel</option>
-                    <option *ngFor="let level of userLevels" [ngValue]="level">
-                     {{ level }}
-                    </option>
-                  </select> 
-            </div>
-            <button type="submit" [disabled]="!formRegister.valid" class="btn btn-primary">Submit</button>
-        </form>
+    <div class="title">
+        <h4>Register</h4>
+    </div>
+    <form [formGroup]="formRegister" (ngSubmit)="register()">
+        <div class="mb-3">
+            <label class="form-label" for="username">Username: </label>
+            <input class="form-control" id="username" type="text" formControlName="username">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password">Password: </label>
+            <input class="form-control" id="password" type="password" formControlName="password">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="userLevel">userLevel: </label>
+            <select class="form-select" formControlName="userLevel">
+                <option [ngValue]="1" disabled>Choose your userLevel</option>
+                <option *ngFor="let level of userLevels" [ngValue]="level">
+                    {{ level }}
+                </option>
+                </select> 
+        </div>
+        <button type="submit" [disabled]="!formRegister.valid" class="btn btn-primary">Submit</button>
+    </form>
     </div>
 </div>

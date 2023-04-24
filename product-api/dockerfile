@@ -1,4 +1,13 @@
-npm init -y
-npm i express dotenv cors helmet
-npm i -D typescript
-npm i -D @types/node @types/express @types/dotenv @types/cors @types/helmet
+FROM node:18.16.0-alpine3.16
+
+WORKDIR /app/srv
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]

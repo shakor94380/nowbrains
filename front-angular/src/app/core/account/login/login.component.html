@@ -1,9 +1,12 @@
 <div class="card">
     <div class="card-body" *ngIf="loginInfo" (click)="logout()">
-        <p>Welcome {{ loginInfo.username }}</p>
+        <h3>Welcome {{ loginInfo.username }}</h3>
         <button class="btn btn-danger">LogOut</button>
     </div>
     <div class="card-body" *ngIf="!loginInfo">
+        <div class="title">
+            <h4>Login</h4>
+        </div>
         <form [formGroup]="formLogin" (ngSubmit)="login()">
             <div class="mb-2">
                 <label class="form-label" for="username">Username: </label>
