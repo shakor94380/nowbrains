@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  api:
+    container_name: product_api
+    restart: on-failure
+    build:
+      context: ./product-api
+      dockerfile: Dockerfile
+    env_file:
+      - product-api/.env
+    volumes:
+      - ./src:/app/src
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+  front:
+    image: angular
+    container_name: front_angular
+    build:
+      context: ./front-angular
+      dockerfile: Dockerfile
+    ports:
+    - 4200:4200
